@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="container" id="fullcontainer">
+  
+    <nav class="navbar fixed-top navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">
+      <img src="revLogo2.webp" width="160" height="40" class="" alt="d-inline-block align-top">
+      </a> 
+    </nav>
+  
+    <br>
+    <br>
+    <br>
+
+    <div id="table-row" class="row">
+      <table id="reimTable" class="table table-hover table-dark">
+          <thead>
+              <tr>
+                  <th>Id Number</th>
+                  <th>Amount</th>
+                  <th>Date Created</th>
+                  <th>Description</th>
+                  <th>User</th>
+                  <th>Status</th>
+                  <th>Type</th>
+              </tr>
+          </thead>
+          <tbody id="reimbursmentsData">
+              <!--Will be filled by JS when data comes in-->
+          </tbody>
+      </table>
+    </div> <!--end table div-->
+
+    <br>
+    <br>
+
+    <form action="" >
+    <p>Add new reimbursement</p>
+    <div id="newReimInput" class="input-group mb-2">
+      <div class="input-group-prepend">
+        <span id="" class="input-group-text">Amount</span>
+      </div>
+        <input id="" type="number" class="form-control" araia-label="Default" >
+    </div>
+
+    <div id="" class="input-group mb-2">
+      <div class="intput-group-prepend">
+        <span id="" class="input-group-text">Description</span>       
+      </div>
+        <input id="" type="text" class="form-control" araia-label="Default" >
+    </div>
+
+    <div id="" class="row">
+      <div>
+        <input type="radio" id="lodging" value="1">
+        <label for="lodging">Lodging</label>
+        <input type="radio" id="travel" value="2">
+        <label for="travel">Travel</label>
+        <input type="radio" id="food" value="3">
+        <label for="food">Food</label>
+        <input type="radio" id="other" value="4">
+        <label for="other">Other</label>
+        <button id="addReimButton" class="btn btn-dark col-sm-1" style="float: right;">Confirm</button>
+      </div>
+
+    </div>
+
+    </form>
+
+
+  </div> <!--end bootstrap container-->    
+</body>
+</html>
