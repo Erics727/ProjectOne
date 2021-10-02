@@ -13,6 +13,7 @@ public class ReimbursementController {
 	
 	ReimbursementService rs = new ReimbursementService();
 	
+	
 	public Handler getAllReimsHandler = (ctx) -> {
 		
 		//if a session exists
@@ -39,6 +40,20 @@ public class ReimbursementController {
 			ctx.status(403);
 		}
 		
+	};
+	
+	
+	public Handler addReimHandler = (ctx) -> {
+		
+		String body = ctx.body();
+		
+		Gson gson = new Gson();
+		
+		Reimbursement reim  = gson.fromJson(body, Reimbursement.class);
+		
+		rs.addReim(reim);
+		
+		ctx.status(201);
 	};
 
 }

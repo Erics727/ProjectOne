@@ -37,6 +37,7 @@ public class ReimbursementDao implements ReimbursementDaoI {
 		
 	}
 
+	/*
 	@Override
 	public void updateReimStatus(Reimbursement reim ,ReimbursementStatus status) { 
 		// TODO Auto-generated method stub
@@ -50,8 +51,25 @@ public class ReimbursementDao implements ReimbursementDaoI {
 		q.executeUpdate();
 		
 		tran.commit();
-		HibernateUtil.closeSession();
+		HibernateUtil.closeSession();	
+	}
+	*/
+	
+	
+	@Override
+	public void updateReimStatus(int reim_id, int reim_status) { 
+		// TODO Auto-generated method stub
+		Session ses = HibernateUtil.getSession();
+		Transaction tran = ses.beginTransaction();
 		
+		String HQL = "UPDATE Reimbursement SET reim_status = '" + reim_status + "' WHERE reim_id = " + reim_id;
+		
+		Query q = ses.createQuery(HQL);
+		
+		q.executeUpdate();
+		
+		tran.commit();
+		HibernateUtil.closeSession();	
 	}
 
 	@Override
@@ -78,6 +96,7 @@ public class ReimbursementDao implements ReimbursementDaoI {
 		return reimList;
 	}
 
+	/*
 	@Override
 	public List<Reimbursement> getReimsById(Users user) {
 		// TODO Auto-generated method stub
@@ -90,5 +109,18 @@ public class ReimbursementDao implements ReimbursementDaoI {
 		return reimList;
 		
 	}
-
+	*/
+	
+	@Override
+	public List<Reimbursement> getReimsByUserId(int user_id) {
+		// TODO Auto-generated method stub
+		Session ses = HibernateUtil.getSession();
+		
+		List<Reimbursement> reimList = ses.createQuery("FROM Reimbursement WHERE reim_author =" + user_id).list();
+		
+		HibernateUtil.closeSession();
+		
+		return reimList;
+		
+	}
 }

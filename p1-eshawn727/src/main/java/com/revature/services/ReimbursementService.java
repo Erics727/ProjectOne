@@ -27,9 +27,9 @@ public class ReimbursementService {
 	}
 	
 	//method will return all reimbursement data by user id from the Dao to the Controller
-	public List<Reimbursement> getReimsById(Users user) {
+	public List<Reimbursement> getReimsById(int id) {
 		
-		return rDao.getReimsById(user);
+		return rDao.getReimsByUserId(id);
 		
 	}
 	
@@ -37,6 +37,12 @@ public class ReimbursementService {
 	public List<Reimbursement> getReimsByStatusId(int id) {
 		
 		return rDao.getReimsByStatusId(id);
+		
+	}
+	
+	public void addReim(Reimbursement reim) {
+		
+		rDao.addReim(reim);
 		
 	}
 
