@@ -91,9 +91,9 @@ public class Main {
 		
 		Javalin app = Javalin.create().start(8090);
 		
+		app.get("/reimbursement", rc.getAllReimsHandler);
 		app.post("/login", lc.loginHandler);
 		
-		app.get("/reimbursement", rc.getAllReimsHandler);
 		
 	}
 
