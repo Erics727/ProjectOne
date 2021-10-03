@@ -22,8 +22,8 @@ public class Users {
 	@Column(name = "user_id")
 	private int user_id;
 	
-	@OneToMany(mappedBy="reim_author", fetch = FetchType.EAGER)
-	private List<Reimbursement> reimbursements;
+	//@OneToMany(mappedBy="reim_author", fetch = FetchType.EAGER)
+	//private List<Reimbursement> reimbursements;
 	
 	private String username;
 	private String password;
@@ -40,11 +40,11 @@ public class Users {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Users(int user_id, List<Reimbursement> reimbursements, String username, String password, String fName,
+	public Users(int user_id, /*List<Reimbursement> reimbursements,*/ String username, String password, String fName,
 			String lName, String email, UserRoles user_role) {
 		super();
 		this.user_id = user_id;
-		this.reimbursements = reimbursements;
+		//this.reimbursements = reimbursements;
 		this.username = username;
 		this.password = password;
 		this.fName = fName;
@@ -53,10 +53,10 @@ public class Users {
 		this.user_role = user_role;
 	}
 
-	public Users(List<Reimbursement> reimbursements, String username, String password, String fName, String lName,
+	public Users(/*List<Reimbursement> reimbursements,*/ String username, String password, String fName, String lName,
 			String email, UserRoles user_role) {
 		super();
-		this.reimbursements = reimbursements;
+		//this.reimbursements = reimbursements;
 		this.username = username;
 		this.password = password;
 		this.fName = fName;
@@ -73,7 +73,7 @@ public class Users {
 		result = prime * result + ((fName == null) ? 0 : fName.hashCode());
 		result = prime * result + ((lName == null) ? 0 : lName.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
-		result = prime * result + ((reimbursements == null) ? 0 : reimbursements.hashCode());
+		//result = prime * result + ((reimbursements == null) ? 0 : reimbursements.hashCode());
 		result = prime * result + user_id;
 		result = prime * result + ((user_role == null) ? 0 : user_role.hashCode());
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
@@ -109,11 +109,11 @@ public class Users {
 				return false;
 		} else if (!password.equals(other.password))
 			return false;
-		if (reimbursements == null) {
-			if (other.reimbursements != null)
-				return false;
-		} else if (!reimbursements.equals(other.reimbursements))
-			return false;
+		//if (reimbursements == null) {
+		//	if (other.reimbursements != null)
+		//		return false;
+		//} else if (!reimbursements.equals(other.reimbursements))
+		//	return false;
 		if (user_id != other.user_id)
 			return false;
 		if (user_role == null) {
@@ -137,14 +137,14 @@ public class Users {
 		this.user_id = user_id;
 	}
 
-	public List<Reimbursement> getReimbursements() {
+	/*public List<Reimbursement> getReimbursements() {
 		return reimbursements;
 	}
 
 	public void setReimbursements(List<Reimbursement> reimbursements) {
 		this.reimbursements = reimbursements;
 	}
-
+	*/
 	public String getUsername() {
 		return username;
 	}
@@ -196,7 +196,7 @@ public class Users {
 	//CHANGE ME
 	@Override
 	public String toString() {
-		return "Users [user_id=" + user_id + ", reimbursements=" + reimbursements + ", username=" + username
+		return "Users [user_id=" + user_id + /*", reimbursements=" + reimbursements +*/ ", username=" + username
 				+ ", password=" + password + ", fName=" + fName + ", lName=" + lName + ", email=" + email
 				+ ", user_role=" + " " +user_role.getRole() + "]";
 	}

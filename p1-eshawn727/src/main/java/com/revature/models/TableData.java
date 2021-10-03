@@ -51,11 +51,11 @@ public class TableData {
 		statusDao.addStatus(approved);
 		statusDao.addStatus(denied);
 		
-		Users user1 = new Users(null, "eric727", "password", "Ralph", "Hancock", "ralph@fake.com", developer);
-		Users user2 = new Users(null, "jamie3645", "pword", "Jamie", "Thompson", "jamie@fake.com", salesRep);
-		Users user3 = new Users(null, "jennie123", "pass", "Jennie", "Jones", "jennie@fake.com", developer);
-		Users user4 = new Users(null, "tom2", "letmein", "Tom", "Williams", "tom@fake.com", salesRep);
-		Users user5 = new Users(null, "Amy5", "allowme", "Amy", "Shawn", "amy@fake.com", manager);
+		Users user1 = new Users(/*null,*/ "eric727", "password", "Ralph", "Hancock", "ralph@fake.com", developer);
+		Users user2 = new Users(/*null,*/ "jamie3645", "pword", "Jamie", "Thompson", "jamie@fake.com", salesRep);
+		Users user3 = new Users(/*null,*/ "jennie123", "pass", "Jennie", "Jones", "jennie@fake.com", developer);
+		Users user4 = new Users(/*null,*/ "tom2", "letmein", "Tom", "Williams", "tom@fake.com", salesRep);
+		Users user5 = new Users(/*null,*/ "Amy5", "allowme", "Amy", "Shawn", "amy@fake.com", manager);
 		userDao.addUser(user1);
 		userDao.addUser(user2);
 		userDao.addUser(user3);

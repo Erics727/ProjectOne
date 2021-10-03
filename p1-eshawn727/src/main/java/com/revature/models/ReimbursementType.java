@@ -22,21 +22,21 @@ public class ReimbursementType {
 	
 	private String type;
 	
-	@OneToMany(mappedBy="reim_type", fetch=FetchType.EAGER)
-	private List<Reimbursement> typeByReim;
+	//@OneToMany(mappedBy="reim_type", fetch=FetchType.EAGER)
+	//private List<Reimbursement> typeByReim;
 
 	public ReimbursementType() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+/*
 	public ReimbursementType(int type_id, String type, List<Reimbursement> typeByReim) {
 		super();
 		this.type_id = type_id;
 		this.type = type;
 		this.typeByReim = typeByReim;
 	}
-
+*/
 	public ReimbursementType(int type_id, String type) {
 		super();
 		this.type_id = type_id;
@@ -53,7 +53,7 @@ public class ReimbursementType {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((type == null) ? 0 : type.hashCode());
-		result = prime * result + ((typeByReim == null) ? 0 : typeByReim.hashCode());
+		//result = prime * result + ((typeByReim == null) ? 0 : typeByReim.hashCode());
 		result = prime * result + type_id;
 		return result;
 	}
@@ -72,13 +72,13 @@ public class ReimbursementType {
 				return false;
 		} else if (!type.equals(other.type))
 			return false;
-		if (typeByReim == null) {
-			if (other.typeByReim != null)
-				return false;
-		} else if (!typeByReim.equals(other.typeByReim))
-			return false;
-		if (type_id != other.type_id)
-			return false;
+		//if (typeByReim == null) {
+		//	if (other.typeByReim != null)
+		//		return false;
+		//} else if (!typeByReim.equals(other.typeByReim))
+		//	return false;
+		//if (type_id != other.type_id)
+		//	return false;
 		return true;
 	}
 
@@ -97,7 +97,7 @@ public class ReimbursementType {
 	public void setType(String type) {
 		this.type = type;
 	}
-
+/*
 	public List<Reimbursement> getTypeByReim() {
 		return typeByReim;
 	}
@@ -105,10 +105,10 @@ public class ReimbursementType {
 	public void setTypeByReim(List<Reimbursement> typeByReim) {
 		this.typeByReim = typeByReim;
 	}
-
+*/
 	@Override
 	public String toString() {
-		return "ReimbursementType [type_id=" + type_id + ", type=" + type + ", typeByReim=" + typeByReim + "]";
+		return "ReimbursementType [type_id=" + type_id + ", type=" + type /*+ ", typeByReim=" + typeByReim*/ + "]";
 	}
 
 	

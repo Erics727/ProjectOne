@@ -22,8 +22,8 @@ public class UserRoles {
 	
 	private String role;
 	
-	@OneToMany(mappedBy="user_role", fetch = FetchType.EAGER)
-	private List<Users> roleByUser;
+	//@OneToMany(mappedBy="user_role", fetch = FetchType.EAGER)
+	//private List<Users> roleByUser;
 
 	public UserRoles() {
 		super();
@@ -34,15 +34,15 @@ public class UserRoles {
 		super();
 		this.role_id = role_id;
 		this.role = role;
-		this.roleByUser = roleByUser;
+		//this.roleByUser = roleByUser;
 	}
-
+/*
 	public UserRoles(String role, List<Users> roleByUser) {
 		super();
 		this.role = role;
 		this.roleByUser = roleByUser;
 	}
-
+*/
 	public UserRoles(String role) {
 		super();
 		this.role = role;
@@ -53,7 +53,7 @@ public class UserRoles {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((role == null) ? 0 : role.hashCode());
-		result = prime * result + ((roleByUser == null) ? 0 : roleByUser.hashCode());
+		//result = prime * result + ((roleByUser == null) ? 0 : roleByUser.hashCode());
 		result = prime * result + role_id;
 		return result;
 	}
@@ -72,11 +72,11 @@ public class UserRoles {
 				return false;
 		} else if (!role.equals(other.role))
 			return false;
-		if (roleByUser == null) {
-			if (other.roleByUser != null)
-				return false;
-		} else if (!roleByUser.equals(other.roleByUser))
-			return false;
+		//if (roleByUser == null) {
+		//	if (other.roleByUser != null)
+		//		return false;
+		//} else if (!roleByUser.equals(other.roleByUser))
+		//	return false;
 		if (role_id != other.role_id)
 			return false;
 		return true;
@@ -97,7 +97,7 @@ public class UserRoles {
 	public void setRole(String role) {
 		this.role = role;
 	}
-
+/*
 	public List<Users> getRoleByUser() {
 		return roleByUser;
 	}
@@ -105,10 +105,10 @@ public class UserRoles {
 	public void setRoleByUser(List<Users> roleByUser) {
 		this.roleByUser = roleByUser;
 	}
-
+*/
 	@Override
 	public String toString() {
-		return "UserRoles [role_id=" + role_id + ", role=" + role + ", roleByUser=" + roleByUser + "]";
+		return "UserRoles [role_id=" + role_id + ", role=" + role /*+ ", roleByUser=" + roleByUser*/ + "]";
 	}
 	
 	

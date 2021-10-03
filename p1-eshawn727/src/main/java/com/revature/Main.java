@@ -35,14 +35,14 @@ public class Main {
 			System.out.println("Hibernate Failed Connection");
 		}
 		*/
-		/*
+		
 		//create dao objects
-		ReimbursementDao reimDao = new ReimbursementDao();
-		ReimbursementTypeDao typeDao = new ReimbursementTypeDao();
-		ReimbursementStatusDao statusDao = new ReimbursementStatusDao();
-		UsersDao userDao = new UsersDao();
-		UserRolesDao roleDao = new UserRolesDao();
-		*/
+		//ReimbursementDao reimDao = new ReimbursementDao();
+		//ReimbursementTypeDao typeDao = new ReimbursementTypeDao();
+		//ReimbursementStatusDao statusDao = new ReimbursementStatusDao();
+		//UsersDao userDao = new UsersDao();
+		//UserRolesDao roleDao = new UserRolesDao();
+		
 		
 		Logger log = LogManager.getLogger(Main.class);
 		
@@ -91,10 +91,11 @@ public class Main {
 		
 		Javalin app = Javalin.create().start(8090);
 		
-		app.get("/reimbursement", rc.getAllReimsHandler);
 		app.post("/login", lc.loginHandler);
 		
-		
+		app.get("/reimbursement", rc.getAllReimsHandler);
+		app.get("/reimbursement/user/:user_id", rc.getReimsByUserIdHandler);
+		app.get("/reimbursement/status/:status_id", rc.getReimsByStatusIdHandler);
 	}
 
 }

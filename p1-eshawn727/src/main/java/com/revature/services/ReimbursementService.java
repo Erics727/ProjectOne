@@ -19,24 +19,17 @@ public class ReimbursementService {
 		
 	}
 	
-	//method will return all reimbursement data by status from the Dao to the Controller
-	public List<Reimbursement> getReimsByStatus(ReimbursementStatus status) {
-		
-		return rDao.getReimsByStatus(status);
-		
-	}
-	
 	//method will return all reimbursement data by user id from the Dao to the Controller
-	public List<Reimbursement> getReimsById(int id) {
+	public List<Reimbursement> getReimsByUserId(int user_id) {
 		
-		return rDao.getReimsByUserId(id);
+		return rDao.getReimsByUserId(user_id);
 		
 	}
 	
 	//method will return all reimbursement data by status id from the Dao to the Controller
-	public List<Reimbursement> getReimsByStatusId(int id) {
+	public List<Reimbursement> getReimsByStatusId(int status_id) {
 		
-		return rDao.getReimsByStatusId(id);
+		return rDao.getReimsByStatusId(status_id);
 		
 	}
 	
