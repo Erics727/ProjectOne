@@ -33,6 +33,12 @@ public class ReimbursementService {
 		
 	}
 	
+	public void updateReimStatus(int reim_id, int reim_status) {
+		
+		rDao.updateReimStatus(reim_id, reim_status);
+		
+	}
+	
 	public void addReim(Reimbursement reim) {
 		
 		rDao.addReim(reim);

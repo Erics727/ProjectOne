@@ -89,9 +89,14 @@ public class Main {
 		ReimbursementController rc = new ReimbursementController();
 		LoginController lc = new LoginController(); 
 		
-		Javalin app = Javalin.create().start(8090);
+		Javalin app = Javalin.create(
+				config -> {
+					config.enableCorsForAllOrigins(); //allows the server to process JS requests from anywhere
+				}
+				).start(8090);
 		
 		app.post("/login", lc.loginHandler);
+		app.post("/reimbursement/add", rc.addReimHandler);
 		
 		app.get("/reimbursement", rc.getAllReimsHandler);
 		app.get("/reimbursement/user/:user_id", rc.getReimsByUserIdHandler);
