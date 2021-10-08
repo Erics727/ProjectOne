@@ -31,6 +31,21 @@ public class UsersDao implements UsersDaoI {
 		
 		return usersList;	
 	}
+
+	@Override
+	public boolean getUserLogin(String username, String password) {
+		
+		Session ses = HibernateUtil.getSession();
+		
+		List<Users> user = ses.createQuery("FROM Users WHERE username = '" + username + "' and password = '" + password + "'").list();
+		
+		HibernateUtil.closeSession();
+		
+	    if(user != null) {
+			return true;
+		}
+		return false;
+	}
 	
 	//Add dao for list of users??
 

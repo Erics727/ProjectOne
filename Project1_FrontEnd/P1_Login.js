@@ -36,11 +36,9 @@ async function loginFunc(){
     console.log(response.status); //useful for debug :)
 
     //control flow based on success or failed login
-    //if(response.status === 200){
+    if(response.status === 200){
         //open user page
-        //window.open(url + "reimbursement")
-    //} else {
-    //    document.getElementById("login-row").innerText="Login failed! Do better."
-    //}
+        window.open("http://127.0.0.1:5500/P1_Reimbursements.html")
+    }
 
 }

@@ -9,4 +9,6 @@ public interface UsersDaoI {
 	public void addUser(Users user);
 	
 	public List<Users> getAllUsers();
+	
+	public boolean getUserLogin(String username, String password);
 }

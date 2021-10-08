@@ -1,6 +1,10 @@
 package com.revature.services;
 
+import com.revature.daos.UsersDao;
+
 public class LoginService {
+	
+	UsersDao uDao = new UsersDao();
 
 	//hardcoding username/password - I don't want to create a whole users table/DAO ;P
 	
@@ -19,4 +23,11 @@ public class LoginService {
 		
 	}
 	
+	/*
+	public boolean login(String username, String password) {
+		
+		return uDao.getUserLogin(username, password);
+		
+	}
+	*/
 }
