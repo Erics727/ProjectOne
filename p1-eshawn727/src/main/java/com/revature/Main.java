@@ -98,6 +98,8 @@ public class Main {
 		app.post("/login", lc.loginHandler);
 		app.post("/reimbursement/add", rc.addReimHandler);
 		
+		app.patch("/reimbursement/update", rc.updateReimHandler);
+		
 		app.get("/reimbursement", rc.getAllReimsHandler);
 		app.get("/reimbursement/user/:user_id", rc.getReimsByUserIdHandler);
 		app.get("/reimbursement/status/:status_id", rc.getReimsByStatusIdHandler);

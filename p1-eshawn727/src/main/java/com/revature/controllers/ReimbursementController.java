@@ -108,6 +108,20 @@ public class ReimbursementController {
 	};
 	
 	
+	public Handler updateReimHandler = (ctx) -> {
+		
+		String body = ctx.body();
+		
+		Gson gson = new Gson();
+		
+		Reimbursement reim  = gson.fromJson(body, Reimbursement.class);
+		
+		rs.updateReimStatus(reim.getReim_id(), reim.getReim_status().getStatus_id());
+		
+		ctx.status(201);
+	};
+	
+	
 	public Handler addReimHandler = (ctx) -> {
 		
 		String body = ctx.body();
