@@ -3,8 +3,10 @@ package com.revature.controllers;
 import java.util.List;
 
 import com.google.gson.Gson;
+import com.revature.models.LoginDTO;
 import com.revature.models.Reimbursement;
 import com.revature.models.ReimbursementStatus;
+import com.revature.models.UpdateDTO;
 import com.revature.services.ReimbursementService;
 
 import io.javalin.core.validation.Validator;
@@ -110,15 +112,17 @@ public class ReimbursementController {
 	
 	public Handler updateReimHandler = (ctx) -> {
 		
-		String body = ctx.body();
+		String body = ctx.body(); //turn the body (data) of the POST request into a Java String
 		
 		Gson gson = new Gson();
 		
-		Reimbursement reim  = gson.fromJson(body, Reimbursement.class);
+		UpdateDTO UDTO = gson.fromJson(body, UpdateDTO.class); 
 		
-		rs.updateReimStatus(reim.getReim_id(), reim.getReim_status().getStatus_id());
+		rs.updateReimStatus(UDTO.getReim_id(), UDTO.getStatus_id());
 		
 		ctx.status(201);
+		
+		
 	};
 	
 	
