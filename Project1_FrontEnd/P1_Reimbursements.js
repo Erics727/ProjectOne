@@ -1,17 +1,18 @@
 const url = "http://localhost:8090/"
 
 //document.getElementById("getReims").addEventListener("click", loadReims); //if we need to load with button
-document.getElementById("addReimButton").addEventListener("click", addReim);
+//document.getElementById("addReimButton").addEventListener("click", addReim);
 
 window.onload = async function loadReims() {
 
 //async function loadReims() {
     //let response = await fetch(url + "reimbursement"); //, {credentials: "include"});
-    let resp = await fetch(url + "reimbursement");
-    console.log(resp);
+    let response = await fetch(url + "reimbursement", {credentials: "include"});
+    console.log(response);
+    //console.log(credentials);
 
-    if(resp.status === 200) {
-        let data = await resp.json();
+    if(response.status === 200) {
+        let data = await response.json();
    
         for(let reim of data){
             let row = document.createElement("tr"); 
@@ -52,8 +53,7 @@ window.onload = async function loadReims() {
     }
 } //end loadReims
 
-async function addReim() {
 
-    
+//async function addReim(){
 
-}
+//}

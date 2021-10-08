@@ -2,6 +2,7 @@ package com.revature.controllers;
 
 import com.google.gson.Gson;
 import com.revature.models.LoginDTO;
+import com.revature.models.Users;
 import com.revature.services.LoginService;
 import com.revature.utils.JwtUtil;
 
@@ -10,6 +11,7 @@ import io.javalin.http.Handler;
 public class LoginController {
 	
 	LoginService ls = new LoginService();
+
 
 	public Handler loginHandler = (ctx) -> {
 		
@@ -41,9 +43,9 @@ public class LoginController {
 			ctx.status(401); //"unauthorized" status code
 			ctx.result("Login Failed! :(");
 			
-		}
-		
+		}	
 		
 	};
 
+	
 }

@@ -35,9 +35,11 @@ async function loginFunc(){
 
     console.log(response.status); //useful for debug :)
 
-    //control flow based on success or failed login
+    //control flow based on successful login
     if(response.status === 200){
         //open user page
+        //may need to change url to include your own ip address
+        
         window.open("http://127.0.0.1:5500/P1_Reimbursements.html")
     }
 

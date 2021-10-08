@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hibernate.Session;
 
 import com.revature.controllers.LoginController;
 import com.revature.controllers.ReimbursementController;
@@ -19,6 +20,7 @@ import com.revature.models.ReimbursementType;
 import com.revature.models.TableData;
 import com.revature.models.UserRoles;
 import com.revature.models.Users;
+import com.revature.utils.HibernateUtil;
 
 import io.javalin.Javalin;
 
@@ -47,8 +49,8 @@ public class Main {
 		Logger log = LogManager.getLogger(Main.class);
 		
 		
-		TableData popDb = new TableData();
-		popDb.populateDB();
+		//TableData popDb = new TableData();
+		//popDb.populateDB();
 		
 	
 		//List<Reimbursement> reimList = reimDao.getAllReims(); //functional
@@ -103,6 +105,10 @@ public class Main {
 		app.get("/reimbursement", rc.getAllReimsHandler);
 		app.get("/reimbursement/user/:user_id", rc.getReimsByUserIdHandler);
 		app.get("/reimbursement/status/:status_id", rc.getReimsByStatusIdHandler);
+		
+
+		
+		
 	}
 
 }
