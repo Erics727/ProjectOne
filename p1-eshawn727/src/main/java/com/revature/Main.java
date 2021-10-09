@@ -45,7 +45,7 @@ public class Main {
 		//ReimbursementStatusDao statusDao = new ReimbursementStatusDao();
 		//UsersDao userDao = new UsersDao();
 		//UserRolesDao roleDao = new UserRolesDao();
-		LoginService ls = new LoginService();
+		//LoginService ls = new LoginService();
 		
 		Logger log = LogManager.getLogger(Main.class);
 		
