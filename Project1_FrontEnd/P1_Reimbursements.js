@@ -3,7 +3,7 @@
 document.getElementById("addReimButton").addEventListener("click", addReimFunc);
 document.getElementById("approveButton").addEventListener("click", approveFunc);
 document.getElementById("denyButton").addEventListener("click", denyFunc);
-//document.getElementById("sortReims").addEventListener("click", sortFunc);
+document.getElementById("sortReims").addEventListener("click", sortFunc);
 
 
 
@@ -125,7 +125,7 @@ async function denyFunc(){
 
     console.log(response.status);
 }
-/*
+
 async function sortFunc(){
     let response = await fetch(url + "reimbursement/status/1", {credentials: "include"});
     if(response.status === 200) {
@@ -169,4 +169,3 @@ async function sortFunc(){
         }
     }
 }
-*/
