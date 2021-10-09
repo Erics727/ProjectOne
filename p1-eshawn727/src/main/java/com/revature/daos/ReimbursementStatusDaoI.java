@@ -9,5 +9,7 @@ public interface ReimbursementStatusDaoI {
 	public List<ReimbursementStatus> getAllStatus();
 	
 	public void addStatus(ReimbursementStatus status);
+	
+	public ReimbursementStatus getStatusById(int id);
 
 }

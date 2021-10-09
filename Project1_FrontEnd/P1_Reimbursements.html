@@ -45,6 +45,23 @@
       </table>
     </div> <!--end table div-->
 
+    <div>
+      <button id="sortReims" class="btn btn-dark">Sort</button>
+    </div>
+
+    <br>
+    <br>
+    <div id="updateStatus" class="input-group">
+      <input id="reimIdInput" type="number" class="form-control" placeholder="Enter Reimbursement Id">
+      <div class="input-group-append">
+        <button id="dropDownMenu" class="btn btn-dark dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Approve/Deny</button>
+        <div class="dropdown-menu" aria-labelledby="dropDownMenu">
+          <button id="approveButton" class="dropdown-item" type="button">Approve</button>
+          <button id="denyButton" class="dropdown-item" type="button">Deny</button>
+        </div>
+      </div>
+    </div>
+
     <br>
     <br>
 
@@ -82,7 +99,8 @@
     </form>
 
 
-  </div> <!--end bootstrap container-->    
+  </div> <!--end bootstrap container--> 
+  <script src="P1_Login.js"></script>   
   <script src="P1_Reimbursements.js"></script>
 </body>
 </html>

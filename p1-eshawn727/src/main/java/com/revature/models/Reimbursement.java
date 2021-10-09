@@ -13,9 +13,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.revature.daos.ReimbursementStatusDao;
+import com.revature.daos.ReimbursementTypeDao;
+import com.revature.daos.UsersDao;
+
+
 @Entity
 @Table(name = "Reimbursements")
 public class Reimbursement {
+	
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -193,6 +199,20 @@ public class Reimbursement {
 		return "Reimbursement [reim_id=" + reim_id + ", amount=" + amount + ", created=" + created
 				+ ", description=" + description + ", reim_author=" + reim_author.getfName() + " " + reim_author.getlName()
 				+ ", reim_status=" + reim_status.getStatus() + ", reim_type=" + " " + reim_type.getType() + "]";
+	}
+
+	public Reimbursement(double amount, String description, int user_id, int reim_type) {
+		super();
+		this.amount = amount;
+		Timestamp ts1 = new Timestamp(System.currentTimeMillis());
+		this.created = ts1;
+		this.description = description;
+		UsersDao userDao = new UsersDao();
+		this.reim_author = userDao.getUserById(user_id);
+		ReimbursementStatusDao rSDao = new ReimbursementStatusDao();
+		this.reim_status = rSDao.getStatusById(1);
+		ReimbursementTypeDao rTDao = new ReimbursementTypeDao();
+		this.reim_type = rTDao.getReimType(reim_type);
 	}
 	
 	

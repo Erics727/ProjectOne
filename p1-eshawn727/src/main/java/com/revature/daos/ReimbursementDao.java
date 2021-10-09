@@ -19,7 +19,7 @@ public class ReimbursementDao implements ReimbursementDaoI {
 		// TODO Auto-generated method stub
 		Session ses = HibernateUtil.getSession();
 		
-		List<Reimbursement> reimList = ses.createQuery("FROM Reimbursement").list();
+		List<Reimbursement> reimList = ses.createQuery("FROM Reimbursement ORDER BY reim_id").list();
 		
 		HibernateUtil.closeSession();
 		
@@ -77,7 +77,7 @@ public class ReimbursementDao implements ReimbursementDaoI {
 		// TODO Auto-generated method stub
 		Session ses = HibernateUtil.getSession();
 		
-		List<Reimbursement> reimList = ses.createQuery("FROM Reimbursement WHERE reim_status =" + status.getStatus_id()).list();
+		List<Reimbursement> reimList = ses.createQuery("FROM Reimbursement WHERE reim_status = '" + status.getStatus_id() + "' ORDER BY reim_id").list();
 		
 		HibernateUtil.closeSession();
 		
@@ -89,7 +89,7 @@ public class ReimbursementDao implements ReimbursementDaoI {
 		// TODO Auto-generated method stub
 		Session ses = HibernateUtil.getSession();
 		
-		List<Reimbursement> reimList = ses.createQuery("FROM Reimbursement WHERE reim_status =" + id).list();
+		List<Reimbursement> reimList = ses.createQuery("FROM Reimbursement WHERE reim_status = '" + id + "' ORDER BY reim_id").list();
 		
 		HibernateUtil.closeSession();
 		

@@ -41,7 +41,14 @@ async function loginFunc(){
     //console.log(response.text());
     let results = await response.json();
     console.log(results);
-    console.log(results.user_role.role_id);
+    console.log(results.user_id);
+    
+    localStorage.setItem("userId", results.user_id);
+    let userId = localStorage.getItem("userId");
+    localStorage.setItem("roleId", results.user_role.role_id);
+    let roleId = localStorage.getItem("roleId");
+    console.log(userId);
+    console.log(roleId);
 
     console.log(response.status); //useful for debug :)
 
@@ -49,14 +56,7 @@ async function loginFunc(){
     if(response.status === 200){
         //open user page
         //may need to change url to include your own ip address
-        if(results.user_role.role_id == 1){//if user is a manager
-            window.open("http://127.0.0.1:5500/P1_Reimbursements.html")//remember to set this to manager url later
-        }
-        else{//if user is not a manager
-            window.open("http://127.0.0.1:5500/P1_Reimbursements.html")//set this to employee url 
-        }
-
-        
+        window.open("http://127.0.0.1:5500/P1_Reimbursements.html"); 
     }
 
 }
