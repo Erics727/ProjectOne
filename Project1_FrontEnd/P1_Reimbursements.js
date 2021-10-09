@@ -4,6 +4,7 @@ const url = "http://localhost:8090/"
 //document.getElementById("addReimButton").addEventListener("click", addReim);
 
 window.onload = async function loadReims() {
+    console.log(localStorage.username)
 
 //async function loadReims() {
     //let response = await fetch(url + "reimbursement"); //, {credentials: "include"});

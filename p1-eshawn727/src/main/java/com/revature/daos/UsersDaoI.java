@@ -12,6 +12,6 @@ public interface UsersDaoI {
 	
 	public boolean getUserLogin(String username, String password);
 	
-	
+	public Users getUserByLogin(String username);
 	
 }

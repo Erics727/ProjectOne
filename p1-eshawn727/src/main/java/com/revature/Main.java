@@ -20,6 +20,7 @@ import com.revature.models.ReimbursementType;
 import com.revature.models.TableData;
 import com.revature.models.UserRoles;
 import com.revature.models.Users;
+import com.revature.services.LoginService;
 import com.revature.utils.HibernateUtil;
 
 import io.javalin.Javalin;
@@ -44,7 +45,7 @@ public class Main {
 		//ReimbursementStatusDao statusDao = new ReimbursementStatusDao();
 		//UsersDao userDao = new UsersDao();
 		//UserRolesDao roleDao = new UserRolesDao();
-		
+		LoginService ls = new LoginService();
 		
 		Logger log = LogManager.getLogger(Main.class);
 		
@@ -72,13 +73,12 @@ public class Main {
 		*/
 		
 		
-		/*
-		System.out.println();
-		List<Users> usersList = userDao.getAllUsers();
-		for(Users u: usersList) {
-			System.out.println(u);
-		}
 		
+		//System.out.println();
+		//Users user = ls.login("eric727", "password");
+		//System.out.println(user);
+		
+		/*
 		List<UserRoles> rolesList = roleDao.getAllUserRoles();
 		for(UserRoles r: rolesList) {
 			System.out.println(r);
@@ -92,7 +92,7 @@ public class Main {
 		LoginController lc = new LoginController(); 
 		
 		Javalin app = Javalin.create(
-				config -> {
+  			config -> {
 					config.enableCorsForAllOrigins(); //allows the server to process JS requests from anywhere
 				}
 				).start(8090);
@@ -106,7 +106,7 @@ public class Main {
 		app.get("/reimbursement/user/:user_id", rc.getReimsByUserIdHandler);
 		app.get("/reimbursement/status/:status_id", rc.getReimsByStatusIdHandler);
 		
-
+		
 		
 		
 	}

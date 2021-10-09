@@ -11,6 +11,12 @@ async function loginFunc(){
     //gather the user input from the login inputs
     let usern = document.getElementById("username").value; 
     let userp = document.getElementById("password").value;
+    localStorage.username = usern;
+    localStorage.password = userp;
+
+    //document.getElementById("result").innerHTML = localStorage.lastname
+
+    //console.log(localStorage.username)
 
     //we want to send the user/pass as JSON, so we need to make a JS object to send
     let user = {
@@ -33,13 +39,15 @@ async function loginFunc(){
         //future fetches will also require this "include" value to send the cookie back
     });
 
+    console.log(response.text());
+
     console.log(response.status); //useful for debug :)
 
     //control flow based on successful login
     if(response.status === 200){
         //open user page
         //may need to change url to include your own ip address
-        
+
         window.open("http://127.0.0.1:5500/P1_Reimbursements.html")
     }
 
