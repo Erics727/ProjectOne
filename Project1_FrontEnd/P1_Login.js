@@ -45,8 +45,10 @@ async function loginFunc(){
     
     localStorage.setItem("userId", results.user_id);
     let userId = localStorage.getItem("userId");
+    localStorage.setItem("roleId", results.user_role.role_id);
+    let roleId = localStorage.getItem("roleId");
     console.log(userId);
-    
+    console.log(roleId);
 
     console.log(response.status); //useful for debug :)
 
