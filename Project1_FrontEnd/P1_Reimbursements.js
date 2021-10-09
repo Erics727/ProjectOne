@@ -1,7 +1,13 @@
-const url = "http://localhost:8090/"
+//const url = "http://localhost:8090/"
 
 //document.getElementById("getReims").addEventListener("click", loadReims); //if we need to load with button
 //document.getElementById("addReimButton").addEventListener("click", addReim);
+document.getElementById("addReimButton").addEventListener("click", addReimFunc);
+
+
+
+//console.log(userId);
+
 
 window.onload = async function loadReims() {
     console.log(localStorage.username)
@@ -55,6 +61,24 @@ window.onload = async function loadReims() {
 } //end loadReims
 
 
-//async function addReim(){
+async function addReimFunc(){
+    let amt = document.getElementById("amtId").value;
+    let desc = document.getElementById("descId").value;
+    let type = document.querySelector('input[name="selectRadio"]:checked').value;
+    let userId = localStorage.getItem("userId");
 
-//}
+    let newReim = {
+        amount:amt,
+        description:desc,
+        reim_type:type,
+        user_id:userId
+    }
+
+    console.log(newReim);
+    let response = await fetch(url + "reimbursement/add", { 
+        method:"POST",
+        body: JSON.stringify(newReim)
+    });
+
+    console.log(response.status);
+}

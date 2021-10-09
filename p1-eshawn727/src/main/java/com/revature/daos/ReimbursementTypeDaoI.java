@@ -9,5 +9,7 @@ public interface ReimbursementTypeDaoI {
 	public List<ReimbursementType> getAllTypes();
 	
 	public void addReimType(ReimbursementType type);
+	
+	public ReimbursementType getReimType(int id);
 
 }

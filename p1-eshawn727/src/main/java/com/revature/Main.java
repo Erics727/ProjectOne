@@ -40,7 +40,7 @@ public class Main {
 		*/
 		
 		//create dao objects
-		//ReimbursementDao reimDao = new ReimbursementDao();
+		ReimbursementDao reimDao = new ReimbursementDao();
 		//ReimbursementTypeDao typeDao = new ReimbursementTypeDao();
 		//ReimbursementStatusDao statusDao = new ReimbursementStatusDao();
 		//UsersDao userDao = new UsersDao();
@@ -87,6 +87,9 @@ public class Main {
 		
 		//log.info("log test");
 		
+		
+		//Reimbursement newReim = new Reimbursement(700, "office supplies", 2, 3);
+		//reimDao.addReim(newReim);
 		
 		ReimbursementController rc = new ReimbursementController();
 		LoginController lc = new LoginController(); 

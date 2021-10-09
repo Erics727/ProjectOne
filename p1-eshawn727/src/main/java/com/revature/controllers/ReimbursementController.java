@@ -5,6 +5,7 @@ import java.util.List;
 import com.google.gson.Gson;
 import com.revature.models.LoginDTO;
 import com.revature.models.Reimbursement;
+import com.revature.models.ReimbursementDTO;
 import com.revature.models.ReimbursementStatus;
 import com.revature.models.UpdateDTO;
 import com.revature.services.ReimbursementService;
@@ -132,9 +133,11 @@ public class ReimbursementController {
 		
 		Gson gson = new Gson();
 		
-		Reimbursement reim  = gson.fromJson(body, Reimbursement.class);
+		ReimbursementDTO RDTO = gson.fromJson(body, ReimbursementDTO.class);
 		
-		rs.addReim(reim);
+		Reimbursement newReim = new Reimbursement(RDTO.getAmount(), RDTO.getDescription(), RDTO.getUser_id(), RDTO.getReim_type());
+		
+		rs.addReim(newReim);
 		
 		ctx.status(201);
 	};

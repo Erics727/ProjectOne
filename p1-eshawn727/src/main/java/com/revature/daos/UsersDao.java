@@ -68,6 +68,23 @@ public class UsersDao implements UsersDaoI {
 		return (Users) user;
 	}
 
+	@Override
+	public Users getUserById(int id) {
+		
+		Session ses = HibernateUtil.getSession();
+		
+		String HQL = "FROM Users WHERE user_id = '" + id + "'";
+		
+		Query q = ses.createQuery(HQL);
+		
+		Object user = q.uniqueResult();
+		
+		HibernateUtil.closeSession();
+		
+		return (Users) user;
+		
+	}
+
 	
 	
 	//Add dao for list of users??

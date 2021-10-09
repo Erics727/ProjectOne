@@ -3,8 +3,10 @@ package com.revature.daos;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 
 import com.revature.models.ReimbursementStatus;
+import com.revature.models.ReimbursementType;
 import com.revature.utils.HibernateUtil;
 
 public class ReimbursementStatusDao implements ReimbursementStatusDaoI{
@@ -29,5 +31,22 @@ public class ReimbursementStatusDao implements ReimbursementStatusDaoI{
 		ses.save(status);
 		
 		HibernateUtil.closeSession();			
+	}
+	
+	@Override
+	public ReimbursementStatus getStatusById(int id) {
+		
+		Session ses = HibernateUtil.getSession();
+		
+		String HQL = "FROM ReimbursementStatus WHERE status_id = '" + id + "'";
+		
+		Query q = ses.createQuery(HQL);
+		
+		Object status = q.uniqueResult();
+		
+		HibernateUtil.closeSession();
+		
+		return (ReimbursementStatus) status;
+		
 	}
 }
