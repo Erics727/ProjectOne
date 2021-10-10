@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>   
+    <title>Employee Reimbursement System</title>   
+    <link rel="stylesheet" href="P1_Reimbursements.css">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -15,23 +16,19 @@
 
 <body>
   <div class="container" id="fullcontainer">
-  
-    <nav class="navbar fixed-top navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">
-      <img src="revLogo2.webp" width="160" height="40" class="" alt="d-inline-block align-top">
-      </a> 
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <a class="navbar-brand"><img src="revLogo2.webp" width="160" height="40" alt="revature logo" style="padding-left: 10px;"></a>
+      <div>        
+        <span class="navbar-text text-light text-sm-center">Employee Reimbursement System</span>
+      </div>
     </nav>
   
     <br>
     <br>
-    <br>
-    <div>
-      <button id="getReims" class="btn btn-dark">Load</button>
-    </div>
-    <br>
-
-    <div id="table-row" class="row">
-      <table id="reimTable" class="table table-hover table-dark">
+    <br>   
+    <div id="tableWrap" class="tableWrapper scrollBar">
+      <table id="reimTable" class="table table-hover table-dark table-sm">
           <thead>
               <tr>
                   <th>Id Number</th>
@@ -49,57 +46,54 @@
       </table>
     </div> <!--end table div-->
 
-    <div>
-      <button id="sortReims" class="btn btn-dark">Sort</button>
-    </div>
-
     <br>
-    <br>
-    <div id="updateStatus" class="input-group">
-      <input id="reimIdInput" type="number" class="form-control" placeholder="Enter Reimbursement Id">
-      <div class="input-group-append">
-        <button id="dropDownMenu" class="btn btn-dark dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Approve/Deny</button>
-        <div class="dropdown-menu" aria-labelledby="dropDownMenu">
-          <button id="approveButton" class="dropdown-item" type="button">Approve</button>
-          <button id="denyButton" class="dropdown-item" type="button">Deny</button>
+    <div id="updateStatus">
+      <div class="d-flex justify-content-center">
+        <div>
+          <button id="sortReims" class="btn btn-dark btn">Sort By Pending</button>
+        </div>
+        <div class="input-group-append w-50">
+          <input id="reimIdInput" type="number" class="form-control" placeholder="Enter Reimbursement Id">
+          <button id="dropDownMenu" class="btn-sm btn-dark dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Approve/Deny</button>
+          <div class="dropdown-menu" aria-labelledby="dropDownMenu">
+            <button id="approveButton" class="dropdown-item" type="btn-sm">Approve</button>
+            <button id="denyButton" class="dropdown-item" type="btn-sm">Deny</button>
+          </div>
         </div>
       </div>
     </div>
 
     <br>
-    <br>
-
     <div>
-      <p>Add new reimbursement</p>
+    <div>
+      <h6 style="font-weight: 525; font-family: sans-serif;" class="d-flex justify-content-center">Enter New Reimbursement</h6>
       <div class="input-group mb-2">
         <div class="input-group-prepend">
-          <span class="input-group-text">Amount</span>
-        </div>
-          <input id="amtId" type="number" class="form-control" araia-label="Default" >
+          <span class="input-group-text bg-dark text-white">Amount</span>
       </div>
-
-      <div class="input-group mb-2">
-        <div class="intput-group-prepend">
-          <span class="input-group-text">Description</span>       
-        </div>
-          <input id="descId" type="text" class="form-control" araia-label="Default" >
+        <input id="amtId" type="number" class="form-control" araia-label="Default" >
+    </div>
+    <div class="input-group mb-2">
+      <div class="intput-group-prepend">
+        <span class="input-group-text bg-dark text-white">Description</span>       
       </div>
-
-      <div class="row">
-        <div>
+        <input id="descId" type="text" class="form-control" araia-label="Default" >
+    </div>
+    <div>
+      <div>
           <input name="selectRadio" type="radio" id="lodging" value="1">
-          <label for="lodging">Lodging</label>
+          <label for="lodging" style="font-size: 18px; font-weight: 450;">Lodging</label>
           <input name="selectRadio" type="radio" id="travel" value="2">
-          <label for="travel">Travel</label>
+          <label for="travel" style="font-size: 18px; font-weight: 450;">Travel</label>
           <input name="selectRadio" type="radio" id="food" value="3">
-          <label for="food">Food</label>
+          <label for="food" style="font-size: 18px; font-weight: 450;">Food</label>
           <input name="selectRadio" type="radio" id="other" value="4">
-          <label for="other">Other</label>
+          <label for="other" style="font-size: 18px; font-weight: 450;">Other</label>
           <button id="addReimButton" class="btn btn-dark col-sm-1" style="float: right;">Confirm</button>
-        </div>
       </div>
     </div>
-
+    </div>
+    <br>
 
   </div> <!--end bootstrap container--> 
   <script src="P1_Login.js"></script>   

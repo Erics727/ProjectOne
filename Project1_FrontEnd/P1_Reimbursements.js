@@ -1,33 +1,33 @@
-
-
+//add eventhandlers for buttons
 document.getElementById("addReimButton").addEventListener("click", addReimFunc);
 document.getElementById("approveButton").addEventListener("click", approveFunc);
 document.getElementById("denyButton").addEventListener("click", denyFunc);
 document.getElementById("sortReims").addEventListener("click", sortFunc);
 
-
-
-//console.log(userId);
+//get user data from local storage
 const userId = localStorage.getItem("userId");
 const roleId = localStorage.getItem("roleId");
 
 window.onload = async function loadReims() {
-    console.log(localStorage.username);
-    console.log(userId);
-//async function loadReims() {
-    //let response = await fetch(url + "reimbursement"); //, {credentials: "include"});
+    //logic to determine if the user has manager privileges
     if (roleId == 1){
         var response = await fetch(url + "reimbursement", {credentials: "include"});
     }else{
         var response = await fetch(url + "reimbursement/user/" + userId, {credentials: "include"});
+
+        //hide manager function to update status
+        var hide = document.getElementById("updateStatus");
+        if (hide.style.display === "none") {
+            hide.style.display = "block";
+          } else {
+            hide.style.display = "none";
+          }
     }
-    //let response = await fetch(url + "reimbursement/user/" + userId, {credentials: "include"});
-    console.log(response);
-    //console.log(credentials);
 
     if(response.status === 200) {
         let data = await response.json();
-   
+        
+        //populate table with server data
         for(let reim of data){
             let row = document.createElement("tr"); 
             
@@ -67,70 +67,81 @@ window.onload = async function loadReims() {
     }
 } //end loadReims
 
-
 async function addReimFunc(){
     let amt = document.getElementById("amtId").value;
     let desc = document.getElementById("descId").value;
     let type = document.querySelector('input[name="selectRadio"]:checked').value;
     let userId = localStorage.getItem("userId");
 
+    //model object to send to server
     let newReim = {
         amount:amt,
         description:desc,
         reim_type:type,
         user_id:userId
     }
-
-    console.log(newReim);
+    
+    //send server request
     let response = await fetch(url + "reimbursement/add", { 
         method:"POST",
         body: JSON.stringify(newReim)
     });
 
     console.log(response.status);
+    window.location.reload();
 }
 
+//approve reimbursement function
 async function approveFunc(){
     let reimId = document.getElementById("reimIdInput").value;
-    let status = 2;
+    let status = 2; //set status to approved
 
+    //model object to send to server
     let statusUpdate = {
         reim_id:reimId,
         status_id: status
     }
 
-    console.log(statusUpdate);
+    //send server request
     let response = await fetch(url + "reimbursement/update", { //need endpoint
         method:"PATCH",
         body: JSON.stringify(statusUpdate)
     });
 
     console.log(response.status);
+    window.location.reload();
 }
 
+//deny reimbursement function
 async function denyFunc(){
     let reimId = document.getElementById("reimIdInput").value;
-    let status = 3;
+    let status = 3; //set status to denied
 
+    //model object to send to server
     let statusUpdate = {
         reim_id:reimId,
         status_id: status
     }
 
-    console.log(statusUpdate);
+    //send server request
     let response = await fetch(url + "reimbursement/update", { 
         method:"PATCH",
         body: JSON.stringify(statusUpdate)
     });
 
     console.log(response.status);
+    window.location.reload();
 }
 
 async function sortFunc(){
+    //empty table data if present
+    $("#reimbursmentsData").empty();
+    
     let response = await fetch(url + "reimbursement/status/1", {credentials: "include"});
     if(response.status === 200) {
         let data = await response.json();
    
+        //populate table 
         for(let reim of data){
             let row = document.createElement("tr"); 
             

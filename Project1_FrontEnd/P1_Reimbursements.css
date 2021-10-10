@@ -1,0 +1,10 @@
+.scrollBar {
+    position: relative;
+    height: 300px;
+    overflow: auto;
+}
+
+.tableWrapper {
+    display: block;
+}
+
