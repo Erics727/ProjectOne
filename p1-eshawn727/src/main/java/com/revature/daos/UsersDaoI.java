@@ -15,5 +15,4 @@ public interface UsersDaoI {
 	public Users getUserByLogin(String username);
 	
 	public Users getUserById(int id);
-	
 }

@@ -7,7 +7,7 @@ public class UpdateDTO {
 	
 	public UpdateDTO() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 	
 	public UpdateDTO(int reim_id, int status_id) {
@@ -31,7 +31,4 @@ public class UpdateDTO {
 	public void setStatus_id(int status_id) {
 		this.status_id = status_id;
 	}
-	
-	
-
 }

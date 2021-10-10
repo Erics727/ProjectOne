@@ -17,13 +17,12 @@ public class UsersDao implements UsersDaoI {
 		
 		ses.save(user);
 		
-		HibernateUtil.closeSession();
-		
+		HibernateUtil.closeSession();	
 	}
 
 	@Override
 	public List<Users> getAllUsers() {
-		// TODO Auto-generated method stub
+		
 		Session ses = HibernateUtil.getSession();
 		
 		List<Users> usersList = ses.createQuery("FROM Users").list();
@@ -36,18 +35,25 @@ public class UsersDao implements UsersDaoI {
 
 	@Override
     public boolean getUserLogin(String username, String password) {
-        // TODO Auto-generated method stub
+        
         Session ses = HibernateUtil.getSession();
+        
         String HQL = "from Users user where user.username=:name and user.password=:pass";
+        
         Query q = ses.createQuery(HQL);
+        
         q.setParameter("name", username);
         q.setParameter("pass", password);
 
         List result = q.list();
+        
         if((result != null) && (result.size() > 0)) {
+        	
             HibernateUtil.closeSession();
             return true;
+            
         } else {
+        	
             return false;
         }
     }
@@ -82,11 +88,5 @@ public class UsersDao implements UsersDaoI {
 		HibernateUtil.closeSession();
 		
 		return (Users) user;
-		
 	}
-
-	
-	
-	//Add dao for list of users??
-
 }

@@ -46,7 +46,7 @@ public class Reimbursement {
 	
 	public Reimbursement() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public Reimbursement(int reim_id, double amount, Timestamp created, String description, Users reim_author,
@@ -185,15 +185,6 @@ public class Reimbursement {
 		this.reim_type = reim_type;
 	}
 
-	/*
-	public String toString() {
-		return "Reimbursement [reim_id=" + reim_id + ", amount=" + amount + ", created=" + created
-				+ ", description=" + description + ", reim_author=" + reim_author + ", reim_status=" + reim_status
-				+ ", reim_type=" + reim_type + "]";
-	}
-	*/
-
-	//CHANGE ME
 	@Override
 	public String toString() {
 		return "Reimbursement [reim_id=" + reim_id + ", amount=" + amount + ", created=" + created

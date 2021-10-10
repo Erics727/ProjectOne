@@ -12,7 +12,7 @@ public class ReimbursementTypeDao implements ReimbursementTypeDaoI{
 
 	@Override
 	public List<ReimbursementType> getAllTypes() {
-		// TODO Auto-generated method stub
+		
 		Session ses = HibernateUtil.getSession();
 		
 		List<ReimbursementType> typeList = ses.createQuery("FROM ReimbursementType").list();
@@ -24,13 +24,12 @@ public class ReimbursementTypeDao implements ReimbursementTypeDaoI{
 
 	@Override
 	public void addReimType(ReimbursementType type) {
-		// TODO Auto-generated method stub
+		
 		Session ses = HibernateUtil.getSession();
 		
 		ses.save(type);
 		
 		HibernateUtil.closeSession();
-		
 	}
 
 	@Override
@@ -47,7 +46,5 @@ public class ReimbursementTypeDao implements ReimbursementTypeDaoI{
 		HibernateUtil.closeSession();
 		
 		return (ReimbursementType) type;
-		
 	}
-
 }

@@ -6,14 +6,13 @@ import org.hibernate.Session;
 import org.hibernate.query.Query;
 
 import com.revature.models.ReimbursementStatus;
-import com.revature.models.ReimbursementType;
 import com.revature.utils.HibernateUtil;
 
 public class ReimbursementStatusDao implements ReimbursementStatusDaoI{
 
 	@Override
 	public List<ReimbursementStatus> getAllStatus() {
-		// TODO Auto-generated method stub
+		
 		Session ses = HibernateUtil.getSession();
 		
 		List<ReimbursementStatus> statusList = ses.createQuery("FROM ReimbursementStatus").list();
@@ -25,7 +24,7 @@ public class ReimbursementStatusDao implements ReimbursementStatusDaoI{
 
 	@Override
 	public void addStatus(ReimbursementStatus status) {
-		// TODO Auto-generated method stub
+		
 		Session ses = HibernateUtil.getSession();
 		
 		ses.save(status);
@@ -46,7 +45,6 @@ public class ReimbursementStatusDao implements ReimbursementStatusDaoI{
 		
 		HibernateUtil.closeSession();
 		
-		return (ReimbursementStatus) status;
-		
+		return (ReimbursementStatus) status;	
 	}
 }

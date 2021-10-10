@@ -3,14 +3,11 @@ package com.revature.controllers;
 import java.util.List;
 
 import com.google.gson.Gson;
-import com.revature.models.LoginDTO;
 import com.revature.models.Reimbursement;
 import com.revature.models.ReimbursementDTO;
-import com.revature.models.ReimbursementStatus;
 import com.revature.models.UpdateDTO;
 import com.revature.services.ReimbursementService;
 
-import io.javalin.core.validation.Validator;
 import io.javalin.http.Handler;
 
 public class ReimbursementController {
@@ -39,8 +36,8 @@ public class ReimbursementController {
 			ctx.status(200);
 			
 		//} else {
-		//	
-		//	//else send a forbidden code
+			
+			//else send a forbidden code
 		//	ctx.status(403);
 		//}
 		
@@ -71,8 +68,8 @@ public class ReimbursementController {
 			ctx.status(200);
 			
 		//} else {
-		//	
-		//	//else send a forbidden code
+			
+			//else send a forbidden code
 		//	ctx.status(403);
 		//}
 		
@@ -103,8 +100,8 @@ public class ReimbursementController {
 			ctx.status(200);
 			
 		//} else {
-		//	
-		//	//else send a forbidden code
+			
+			//else send a forbidden code
 		//	ctx.status(403);
 		//}
 		
@@ -113,15 +110,24 @@ public class ReimbursementController {
 	
 	public Handler updateReimHandler = (ctx) -> {
 		
-		String body = ctx.body(); //turn the body (data) of the POST request into a Java String
+		//if a session exists
+		//if(ctx.req.getSession(false) != null) {
 		
-		Gson gson = new Gson();
+			String body = ctx.body(); //turn the body (data) of the POST request into a Java String
 		
-		UpdateDTO UDTO = gson.fromJson(body, UpdateDTO.class); 
+			Gson gson = new Gson();
 		
-		rs.updateReimStatus(UDTO.getReim_id(), UDTO.getStatus_id());
+			UpdateDTO UDTO = gson.fromJson(body, UpdateDTO.class); 
 		
-		ctx.status(201);
+			rs.updateReimStatus(UDTO.getReim_id(), UDTO.getStatus_id());
+		
+			ctx.status(201);
+		
+		//} else {
+			
+			//else send a forbidden code
+		//	ctx.status(403);
+		//}
 		
 		
 	};
@@ -129,17 +135,26 @@ public class ReimbursementController {
 	
 	public Handler addReimHandler = (ctx) -> {
 		
-		String body = ctx.body();
+		//if a session exists
+		//if(ctx.req.getSession(false) != null) {
 		
-		Gson gson = new Gson();
+			String body = ctx.body();
 		
-		ReimbursementDTO RDTO = gson.fromJson(body, ReimbursementDTO.class);
+			Gson gson = new Gson();
 		
-		Reimbursement newReim = new Reimbursement(RDTO.getAmount(), RDTO.getDescription(), RDTO.getUser_id(), RDTO.getReim_type());
+			ReimbursementDTO RDTO = gson.fromJson(body, ReimbursementDTO.class);
 		
-		rs.addReim(newReim);
+			Reimbursement newReim = new Reimbursement(RDTO.getAmount(), RDTO.getDescription(), RDTO.getUser_id(), RDTO.getReim_type());
 		
-		ctx.status(201);
+			rs.addReim(newReim);
+		
+			ctx.status(201);
+			
+		//} else {
+			
+			//else send a forbidden code
+		//	ctx.status(403);
+		//}
 	};
 
 }

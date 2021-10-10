@@ -9,7 +9,7 @@ public class ReimbursementDTO {
 	
 	public ReimbursementDTO() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public ReimbursementDTO(double amount, String description, int user_id, int reim_type) {
@@ -51,7 +51,4 @@ public class ReimbursementDTO {
 	public void setReim_type(int reim_type) {
 		this.reim_type = reim_type;
 	}
-
-	
-	
 }
