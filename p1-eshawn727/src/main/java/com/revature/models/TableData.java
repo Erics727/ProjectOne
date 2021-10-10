@@ -20,10 +20,9 @@ public class TableData {
 	
 	public TableData() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
-
-
+	
 
 	public void populateDB() {
 		
@@ -51,18 +50,18 @@ public class TableData {
 		statusDao.addStatus(approved);
 		statusDao.addStatus(denied);
 		
-		Users user1 = new Users(/*null,*/ "eric727", "password", "Ralph", "Hancock", "ralph@fake.com", developer);
-		Users user2 = new Users(/*null,*/ "jamie3645", "pword", "Jamie", "Thompson", "jamie@fake.com", salesRep);
-		Users user3 = new Users(/*null,*/ "jennie123", "pass", "Jennie", "Jones", "jennie@fake.com", developer);
-		Users user4 = new Users(/*null,*/ "tom2", "letmein", "Tom", "Williams", "tom@fake.com", salesRep);
-		Users user5 = new Users(/*null,*/ "Amy5", "allowme", "Amy", "Shawn", "amy@fake.com", manager);
+		Users user1 = new Users("eric727", "password", "Ralph", "Hancock", "ralph@fake.com", developer);
+		Users user2 = new Users("jamie3645", "pword", "Jamie", "Thompson", "jamie@fake.com", salesRep);
+		Users user3 = new Users("jennie123", "pass", "Jennie", "Jones", "jennie@fake.com", developer);
+		Users user4 = new Users("tom2", "letmein", "Tom", "Williams", "tom@fake.com", salesRep);
+		Users user5 = new Users("Amy5", "allowme", "Amy", "Shawn", "amy@fake.com", manager);
 		userDao.addUser(user1);
 		userDao.addUser(user2);
 		userDao.addUser(user3);
 		userDao.addUser(user4);
 		userDao.addUser(user5);
 		
-		//
+		
 		Timestamp ts1 = new Timestamp(System.currentTimeMillis());
 		
 		Reimbursement reim1 = new Reimbursement(150.25, ts1 ,"Hotel for convention", user1, pending, lodging);
@@ -87,8 +86,5 @@ public class TableData {
 		reimDao.addReim(reim9);
 		reimDao.addReim(reim10);
 				
-	}
-
-	
-	
+	}	
 }

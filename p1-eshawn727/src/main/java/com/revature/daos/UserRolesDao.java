@@ -16,13 +16,12 @@ public class UserRolesDao implements UserRolesDaoI {
 		
 		ses.save(role);
 		
-		HibernateUtil.closeSession();
-		
+		HibernateUtil.closeSession();	
 	}
 
 	@Override
 	public List<UserRoles> getAllUserRoles() {
-		// TODO Auto-generated method stub
+		
 		Session ses = HibernateUtil.getSession();
 		
 		List<UserRoles> rolesList = ses.createQuery("FROM UserRoles").list();
@@ -31,5 +30,4 @@ public class UserRolesDao implements UserRolesDaoI {
 		
 		return rolesList;
 	}
-
 }

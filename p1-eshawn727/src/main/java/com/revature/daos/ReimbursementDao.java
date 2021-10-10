@@ -9,14 +9,13 @@ import org.hibernate.Transaction;
 
 import com.revature.models.Reimbursement;
 import com.revature.models.ReimbursementStatus;
-import com.revature.models.Users;
 import com.revature.utils.HibernateUtil;
 
 public class ReimbursementDao implements ReimbursementDaoI {
 
 	@Override
 	public List<Reimbursement> getAllReims() {
-		// TODO Auto-generated method stub
+		
 		Session ses = HibernateUtil.getSession();
 		
 		List<Reimbursement> reimList = ses.createQuery("FROM Reimbursement ORDER BY reim_id").list();
@@ -28,38 +27,19 @@ public class ReimbursementDao implements ReimbursementDaoI {
 
 	@Override
 	public void addReim(Reimbursement reim) {
-		// TODO Auto-generated method stub
+		
 		Session ses = HibernateUtil.getSession();
 		
 		ses.save(reim);
 		
 		HibernateUtil.closeSession();
-		
 	}
-
-	/*
-	@Override
-	public void updateReimStatus(Reimbursement reim ,ReimbursementStatus status) { 
-		// TODO Auto-generated method stub
-		Session ses = HibernateUtil.getSession();
-		Transaction tran = ses.beginTransaction();
-		
-		String HQL = "UPDATE Reimbursement SET reim_status = '" + status.getStatus_id() + "' WHERE reim_id = " + reim.getReim_id();
-		
-		Query q = ses.createQuery(HQL);
-		
-		q.executeUpdate();
-		
-		tran.commit();
-		HibernateUtil.closeSession();	
-	}
-	*/
-	
 	
 	@Override
 	public void updateReimStatus(int reim_id, int reim_status) { 
-		// TODO Auto-generated method stub
+		
 		Session ses = HibernateUtil.getSession();
+		
 		Transaction tran = ses.beginTransaction();
 		
 		String HQL = "UPDATE Reimbursement SET reim_status = '" + reim_status + "' WHERE reim_id = " + reim_id;
@@ -69,12 +49,13 @@ public class ReimbursementDao implements ReimbursementDaoI {
 		q.executeUpdate();
 		
 		tran.commit();
+		
 		HibernateUtil.closeSession();	
 	}
 
 	@Override
 	public List<Reimbursement> getReimsByStatus(ReimbursementStatus status) {
-		// TODO Auto-generated method stub
+		
 		Session ses = HibernateUtil.getSession();
 		
 		List<Reimbursement> reimList = ses.createQuery("FROM Reimbursement WHERE reim_status = '" + status.getStatus_id() + "' ORDER BY reim_id").list();
@@ -86,7 +67,7 @@ public class ReimbursementDao implements ReimbursementDaoI {
 	
 	@Override
 	public List<Reimbursement> getReimsByStatusId(int id) {
-		// TODO Auto-generated method stub
+		
 		Session ses = HibernateUtil.getSession();
 		
 		List<Reimbursement> reimList = ses.createQuery("FROM Reimbursement WHERE reim_status = '" + id + "' ORDER BY reim_id").list();
@@ -96,31 +77,29 @@ public class ReimbursementDao implements ReimbursementDaoI {
 		return reimList;
 	}
 
-	/*
+	
 	@Override
-	public List<Reimbursement> getReimsById(Users user) {
-		// TODO Auto-generated method stub
+	public Reimbursement getReimsById(int id) {
+		
 		Session ses = HibernateUtil.getSession();
 		
-		List<Reimbursement> reimList = ses.createQuery("FROM Reimbursement WHERE reim_author =" + user.getUser_id()).list();
+		Object reim = ses.createQuery("FROM Reimbursement WHERE reim_id = '" + id + "'").uniqueResult();
 		
 		HibernateUtil.closeSession();
 		
-		return reimList;
-		
+		return (Reimbursement) reim;	
 	}
-	*/
+	
 	
 	@Override
 	public List<Reimbursement> getReimsByUserId(int user_id) {
-		// TODO Auto-generated method stub
+		
 		Session ses = HibernateUtil.getSession();
 		
-		List<Reimbursement> reimList = ses.createQuery("FROM Reimbursement WHERE reim_author =" + user_id).list();
+		List<Reimbursement> reimList = ses.createQuery("FROM Reimbursement WHERE reim_author = '" + user_id + "' ORDER BY reim_id").list();
 		
 		HibernateUtil.closeSession();
 		
 		return reimList;
-		
 	}
 }
