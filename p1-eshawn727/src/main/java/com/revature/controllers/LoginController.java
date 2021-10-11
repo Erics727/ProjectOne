@@ -11,7 +11,7 @@ public class LoginController {
 	
 	LoginService ls = new LoginService();
 
-	
+	//checks the database for valid user credentials and returns the Users object
 	public Handler loginHandler = (ctx) -> {
 		
 		try {

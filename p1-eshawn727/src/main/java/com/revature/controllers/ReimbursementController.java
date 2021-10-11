@@ -106,7 +106,7 @@ public class ReimbursementController {
 		
 		
 		try {
-			//read in an int representing user id from the path parameters
+			//read in an int representing status id from the path parameters
 			int status_id = Integer.parseInt(ctx.pathParam("status_id"));
 				
 			//create an array with reim data
@@ -194,6 +194,7 @@ public class ReimbursementController {
 			
 			ReimbursementDTO RDTO = gson.fromJson(body, ReimbursementDTO.class);
 			
+			//uses a custom constructor to add a new reimbursement based on user input
 			Reimbursement newReim = new Reimbursement(RDTO.getAmount(), RDTO.getDescription(), RDTO.getUser_id(), RDTO.getReim_type());
 			
 			rs.addReim(newReim);

@@ -39,6 +39,7 @@ public class ReimbursementService {
 		
 	}
 	
+	//method updates a reimbursement with a given id to the givin status
 	public void updateReimStatus(int reim_id, int reim_status) {
 		
 		log.info("USER UPDATED REIMBURSEMENT REIM_ID: " + reim_id);
@@ -46,6 +47,7 @@ public class ReimbursementService {
 		
 	}
 	
+	//method adds new reimbursements to the database
 	public void addReim(Reimbursement reim) {
 		
 		log.info("USER " + reim.getReim_author().getUser_id() + " ADDED NEW REIMBURSEMENT");
