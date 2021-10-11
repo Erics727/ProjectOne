@@ -14,30 +14,52 @@ public class LoginController {
 	
 	public Handler loginHandler = (ctx) -> {
 		
-		String body = ctx.body(); 
-		
-		Gson gson = new Gson();
-		
-		LoginDTO LDTO = gson.fromJson(body, LoginDTO.class); 
-		
-		Users user = ls.login(LDTO.getUsername(), LDTO.getPassword());
-		
-		if(user != null) { 
+		try {
+			String body = ctx.body(); 
 			
-			String JSONUser = gson.toJson(user);
+			Gson gson = new Gson();
 			
-			ctx.req.getSession();
+			LoginDTO LDTO = gson.fromJson(body, LoginDTO.class); 
 			
-			ctx.status(200);
+			Users user = ls.login(LDTO.getUsername(), LDTO.getPassword());
 			
-			ctx.result(JSONUser);
+			if(user != null) { 
+				
+				String JSONUser = gson.toJson(user);
+				
+				ctx.req.getSession();
+				
+				ctx.status(200);
+				
+				ctx.result(JSONUser);
+				
+			} else {
+				
+				ctx.status(401);
+				
+				ctx.result("Login Failed! :(");
+				
+			}
 			
-		} else {
+		} catch (NullPointerException e) {
+			System.out.println("Null pointer exception in loginHandler");
+			e.printStackTrace();
+			ctx.status(404);
 			
-			ctx.status(401);
+		} catch (NumberFormatException e) {
+			System.out.println("Number format exception in loginHandler");
+			e.printStackTrace();
+			ctx.status(404);
 			
-			ctx.result("Login Failed! :(");
+		} catch (IndexOutOfBoundsException e) {
+			System.out.println("Index out of bounds in loginHandler");
+			e.printStackTrace();
+			ctx.status(404);
 			
+		} catch (Exception e) {
+			System.out.println("Something went wrong with loginHandler!");
+			e.printStackTrace();
+			ctx.status(500);
 		}	
 		
 	};
